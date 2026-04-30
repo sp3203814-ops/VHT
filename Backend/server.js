@@ -20,7 +20,10 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
 app.use(express.json());
 
 
