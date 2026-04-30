@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Testimonials from "../components/Testimonials";
 
 const Home = () => {
+  const API = import.meta.env.VITE_API_URL;
   // Only Enquiry Form DB Connection
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +23,7 @@ const Home = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/enquiry", {
+      const res = await fetch(`${API}/api/enquiry`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Users, BookOpen, Mail, UserCheck, Edit, Trash2 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 export default function AdminDashboard() {
+  const API = import.meta.env.VITE_API_URL;
   const [data, setData] = useState({
     users: [],
     tutors: [],
@@ -22,7 +23,7 @@ export default function AdminDashboard() {
         return;
       }
 
-      const res = await fetch("http://localhost:5000/api/admin/dashboard", {
+      const res = await fetch(`${API}/api/admin/dashboard`, {
         headers: {
           Authorization: `Bearer ${userInfo.token}`,
         },

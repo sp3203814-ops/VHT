@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 export default function BecomeTutor() {
+  const API = import.meta.env.VITE_API_URL;
   // Only Form DB Connection
  const [formData, setFormData] = useState({
   name: "",
@@ -28,7 +29,7 @@ const handleSubmit = async (e) => {
       form.append(key, formData[key]);
     }
 
-    const res = await fetch("http://localhost:5000/api/tutor/apply", {
+    const res = await fetch(`${API}/api/tutor/apply`, {
       method: "POST",
       body: form,
     });
