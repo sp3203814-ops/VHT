@@ -14,12 +14,8 @@ connectDB();
 
 const app = express();
 
+app.use(cors());
 app.use(express.json());
-
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
-}));
 
 app.get("/", (req, res) => {
   res.send("API Running...");
@@ -31,4 +27,8 @@ app.use("/api/enquiry", enquiryRoutes);
 app.use("/api/tutor", tutorRoutes);
 app.use("/api/admin", adminRoutes);
 
-export default app;
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
